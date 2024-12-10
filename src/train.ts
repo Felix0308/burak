@@ -8,7 +8,7 @@
 // string holatida return qilsin.
 // MASALAN: getPositive([1, -4, 2]) return qiladi "12".
 
-function getPositive(arr) {
+function getPositive(arr: number[]): string {
     return arr.filter(num => num > 0).join("");
 }
 
