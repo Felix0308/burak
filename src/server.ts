@@ -1,13 +1,7 @@
-// console.log("EXUCUTED!");
+import dotenv from 'dotenv';
+dotenv.config();
 
+// console.log("PORT:", process.env.PORT);
 
-// import moment from "moment";
+// console.log("MONGO_URL:", process.env.MONGO_URL);
 
-// const currentTime = moment().format("YYYY MM DD");
-// console.log(currentTime);
-
-// const person: string = "Martin";
-// const count: number = 100;
-
-// Architectural pattern: MVC, DI, MVP
-// Design pattern: Middleware, Decotar
