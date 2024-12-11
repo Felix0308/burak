@@ -1,5 +1,6 @@
 import express from 'express';
 import path from "path";
+import router from "./router";
 
 
 // expressni 4 ta bo'limi mavjud:
@@ -14,5 +15,6 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 /** 4-ROUTERS **/
+app.use("/", router);  // Middleware Design Pattern
 
 export default app; 
