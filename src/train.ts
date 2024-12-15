@@ -27,15 +27,26 @@
 
 // MASALAN: getDigits("m14i1t") return qiladi "141"
 
-function getDigits(str: string): string {
-  return str.replace(/\D/g, "");
-}
+// function getDigits(str: string): string {
+//   return str.replace(/\D/g, "");
+// }
 
-// call
-console.log(getDigits("m14i1t")); // "141"
-console.log(getDigits("abc"));    // ""
-console.log(getDigits("a1b2c3")); // "123"
+// // call
+// console.log(getDigits("m14i1t")); // "141"
+// console.log(getDigits("abc"));    // ""
+// console.log(getDigits("a1b2c3")); // "123"
 
 // \D bilan raqam bo'lmagan belgilar topiladi.
 // g (global flag)- butun string bo'ylab qo'llanadi.
 // / — Regulyar ifoda chegaralari
+
+// **********************************************************************
+/* Project Standards:
+  - Logging standards
+  - Naming standards
+      function, method, variable => CAMEL     goHome
+      class => PASKAL                         MemberService
+      folder => KEBAB            
+      css => SNAKE                            button_style
+  -Error handling
+ */
