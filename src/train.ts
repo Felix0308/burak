@@ -50,3 +50,10 @@
       css => SNAKE                            button_style
   -Error handling
  */
+
+  /**
+   * Traditional Api
+   * Rest Api
+   * GraphQl Api
+   * ...
+   */
