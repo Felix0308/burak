@@ -10,7 +10,7 @@ import { MORGAN_FORMAT } from './libs/config';
 /** 1-ENTRANCE **/
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));  // middleware (pattern)integration hisoblanadi. burak adminka loyihamizni BSSR usulida quramiz, frontendimizga kerak bo'ladigon css, image shu kabi sourceslarni butun browserlarga ochib beriladi.
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));  // Bu middleware form orqali yuborilgan ma'lumotlarni body parser yordamida o'qishga imkon beradi.{extended: true} - bu qism nested objects (murakkab obyektlar) bilan ishlashga ruxsat beradi. Masalan, form orqali yuborilgan ma'lumotlar serverda req.body orqali olinadi.
 app.use(express.json()); // rest api sifatida request bo'layotgan datalarni bodysida kelayotgan json datani o'tkazishga ruxsat beryapti
 app.use(morgan(MORGAN_FORMAT)); // middleware dizayn pattern
 /** 2-SESSIONS **/

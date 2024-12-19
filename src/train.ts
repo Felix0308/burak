@@ -46,11 +46,11 @@
 // Shunday function yozing, u parametridagi array ichida eng kop takrorlangan raqamni topib qaytarsin.
 // MASALAN: majorityElement([1,2,3,4,5,4,3,4]) return 4
 
-function majorityElement(arr: number[]): number {
-  return arr.sort()[Math.floor(arr.length / 2)];
-}
+// function majorityElement(arr: number[]): number {
+//   return arr.sort()[Math.floor(arr.length / 2)];
+// }
 
-console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
 
 // **********************************************************************
 
