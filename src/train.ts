@@ -17,13 +17,11 @@
 // console.log(getPositive([5, 0, 10]));      // "510" barchasi musbat son
 // console.log(getPositive([]));              // "" bu bo'sh array bo'lgani uchun
 
-
 // **********************************************************************
-// H2-TASK: 
+// H2-TASK:
 
-// Shunday function tuzing, unga string argument pass bolsin. 
+// Shunday function tuzing, unga string argument pass bolsin.
 // Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
-
 
 // MASALAN: getDigits("m14i1t") return qiladi "141"
 
@@ -50,7 +48,7 @@
 //   return arr.sort()[Math.floor(arr.length / 2)];
 // }
 
-// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); 
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
 
 // **********************************************************************
 
@@ -64,10 +62,21 @@
   -Error handling
  */
 
-  /**
-   * Traditional Api
-   * Rest Api
-   * GraphQl Api
-   * ...
-   */
+/**
+ * Traditional Api
+ * Rest Api
+ * GraphQl Api
+ * ...
+ */
 
+// **********************************************************************
+// J-TASK:
+
+// Shunday function yozing, u string qabul qilsin va string ichidagi eng uzun sozni qaytarsin.
+// MASALAN: findLongestWord("I come from Uzbekistan") return "Uzbekistan"
+
+function findLongestWord(str: string): string {
+  return str.split(" ").sort((a, b) => b.length - a.length)[0];
+}
+
+console.log(findLongestWord("I come from Uzbekistan")); // "Uzbekistan"
