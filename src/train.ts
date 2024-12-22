@@ -81,8 +81,31 @@
 
 // console.log(findLongestWord("I come from Uzbekistan")); // "Uzbekistan"
 
+// *************************************************************************************************
+
+
 /* Frontend ni develop qilish jarayoni 2 xil:
     - Traditional Frontend Development => boshqacha nomi - SSR (BSSR) (burak adminka aplication) => EJS fayli orqali quriladi
     - Modern Frontend Development      => boshqacha nomi - SPI  (burak user aplication)    => REACT library foydalaniladi
   
  */
+
+
+
+// *************************************************************************************************
+// K-TASK: 
+
+// Shunday function yozing, u string qabul qilsin va string ichidagi unli harflar sonini qaytarsin.
+// MASALAN: countVowels("string") return 1;
+
+function countVowels(str: string): number {
+    const vowels = "aeiouAEIOU"; 
+    let count = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        if (vowels.indexOf(str[i]) !== -1) { 
+            count++;
+        }
+    }
+    return count;
+}
