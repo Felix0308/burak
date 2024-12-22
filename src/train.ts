@@ -75,8 +75,14 @@
 // Shunday function yozing, u string qabul qilsin va string ichidagi eng uzun sozni qaytarsin.
 // MASALAN: findLongestWord("I come from Uzbekistan") return "Uzbekistan"
 
-function findLongestWord(str: string): string {
-  return str.split(" ").sort((a, b) => b.length - a.length)[0];
-}
+// function findLongestWord(str: string): string {
+//   return str.split(" ").sort((a, b) => b.length - a.length)[0];
+// }
 
-console.log(findLongestWord("I come from Uzbekistan")); // "Uzbekistan"
+// console.log(findLongestWord("I come from Uzbekistan")); // "Uzbekistan"
+
+/* Frontend ni develop qilish jarayoni 2 xil:
+    - Traditional Frontend Development => boshqacha nomi - SSR (BSSR) (burak adminka aplication) => EJS fayli orqali quriladi
+    - Modern Frontend Development      => boshqacha nomi - SPI  (burak user aplication)    => REACT library foydalaniladi
+  
+ */
