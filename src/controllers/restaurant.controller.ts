@@ -4,6 +4,7 @@ import MemberService from "../models/Member.service";
 import { log } from "console";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
+import { Message } from "../libs/Errors";
 
 const memberService = new MemberService();
 
@@ -46,7 +47,6 @@ restaurantController.processSignup = async (
     const newMember: MemberInput = req.body;
     newMember.memberType = MemberType.RESTAURANT;
     const result = await memberService.processSignup(newMember);
-    // TODO: SESSIONS AUTHENTICATION
 
     req.session.member = result;
     req.session.save(function () {
@@ -67,7 +67,6 @@ restaurantController.processLogin = async (
 
     const input: LoginInput = req.body;
     const result = await memberService.processLogin(input);
-    // TODO: SESSIONS AUTHENTICATION
 
     req.session.member = result;
     req.session.save(function () {
@@ -75,6 +74,21 @@ restaurantController.processLogin = async (
     });
   } catch (err) {
     console.log("Error, processLogin:", err);
+    res.send(err);
+  }
+};
+
+restaurantController.checkAuthSession = async (
+  req: AdminRequest,
+  res: Response
+) => {
+  try {
+    console.log("checkAuthSession");
+    if (req.session?.member)
+      res.send(`<script> alert("${req.session.member.memberNick}")</script>`);
+    else res.send(`<script> alert("${Message.NOT_AUTHENTICATED}")</script>`);
+  } catch (err) {
+    console.log("Error, checkAuthSession:", err);
     res.send(err);
   }
 };
