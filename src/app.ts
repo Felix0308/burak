@@ -28,7 +28,7 @@ app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
     cookie: {
-      maxAge: 1000 * 3600 * 3, // 3h
+      maxAge: 1000 * 3600 * 6, // 6s
     },
     store: store,
     resave: true,          //  10:30 auth => 13:30 agar 12:00 da kirsak 3 soat qo'shilib 15:00 ga yangilanadi, ya'ni ohirgi kirgandan 3 soat mobayniada. userimiz ohirgi kirgan vaqti 3 soatdan dan bo'lsa bizni sessionimiz doim saqlanishi kerak degani ma'noni anglatadi
