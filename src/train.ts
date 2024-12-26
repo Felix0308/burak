@@ -62,7 +62,7 @@
   -Error handling
  */
 
-/**
+/**  Request:
  * Traditional Api
  * Rest Api
  * GraphQl Api
@@ -124,7 +124,16 @@
 // console.log(reverseSentence("we like coding"));    // "ew ekil gnidoc"
 
 // *************************************************************************************************
-/*
+/*  Cookies:
    request join
    self destroy
+*/
+
+/*  Validation:
+   Frontend validation => frontend da malumotlarni to'g'ri kiritilayotganini tekshiradi.
+   pipe validation     => backend va frontend oralig'idagi serverga kirish oralig'idagi validation
+   Backend validation  => 
+   Database validation => 
+
+
 */
