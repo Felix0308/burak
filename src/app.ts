@@ -19,12 +19,12 @@ const store = new MongoDBStore({
 // expressni 4 ta bo'limi mavjud:
 /** 1-ENTRANCE **/
 const app = express();
-app.use(express.static(path.join(__dirname, "public")));  // middleware (pattern)integration hisoblanadi. burak adminka loyihamizni BSSR usulida quramiz, frontendimizga kerak bo'ladigon css, image shu kabi sourceslarni butun browserlarga ochib beriladi.
-app.use(express.urlencoded({extended: true}));  // Bu middleware form orqali yuborilgan ma'lumotlarni body parser yordamida o'qishga imkon beradi.{extended: true} - bu qism nested objects (murakkab obyektlar) bilan ishlashga ruxsat beradi. Masalan, form orqali yuborilgan ma'lumotlar serverda req.body orqali olinadi.
-app.use(express.json()); // rest api sifatida request bo'layotgan datalarni bodysida kelayotgan json datani o'tkazishga ruxsat beryapti
-app.use(morgan(MORGAN_FORMAT)); // middleware dizayn pattern
+app.use(express.static(path.join(__dirname, "public")));  // middleware dizayn pattern hisoblanadi. burak adminka loyihamizni BSSR usulida quramiz, frontendimizga kerak bo'ladigon css, image shu kabi sourceslarni butun browserlarga public folderda ochib beriladi.
+app.use(express.urlencoded({extended: true}));  // traditional API larga xizmat qiladi. Bu middleware form orqali yuborilgan ma'lumotlarni body parser yordamida o'qishga imkon beradi.{extended: true} - bu qism nested objects (murakkab obyektlar) bilan ishlashga ruxsat beradi. Masalan, form orqali yuborilgan ma'lumotlar serverda req.body orqali olinadi.
+app.use(express.json()); // rest API larga xizmat qiladi. rest api sifatida request bo'layotgan datalarni bodysida kelayotgan json datani o'tkazishga ruxsat beryapti
+app.use(morgan(MORGAN_FORMAT)); // middleware dizayn pattern =. backendimizni terminalda login bo'lishini tashkillashtirib beradi
 
-/** 2-SESSIONS **/
+/** 2-SESSIONS **/   // => authenticationni tashkillashtirib beradi
 app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
   next();
 })
 
-/** 3-VIEWS **/
+/** 3-VIEWS **/  // => frontend ni backend da quryapmiz bssr orqali
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
