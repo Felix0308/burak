@@ -139,10 +139,10 @@
 */
 
 // *************************************************************************************************
-// M-TASK: 
+// M-TASK:
 
-// Shunday function yozing, u raqamlardan tashkil topgan array qabul qilsin va array ichidagi har bir raqam 
-// uchun raqamni ozi va hamda osha raqamni kvadratidan tashkil topgan object hosil qilib, 
+// Shunday function yozing, u raqamlardan tashkil topgan array qabul qilsin va array ichidagi har bir raqam
+// uchun raqamni ozi va hamda osha raqamni kvadratidan tashkil topgan object hosil qilib,
 // hosil bolgan objectlarni array ichida qaytarsin.
 // MASALAN: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}];
 
@@ -153,16 +153,61 @@
 // console.log(getSquareNumbers([1,2,3]));
 
 // *************************************************************************************************
-// N-TASK: 
+// N-TASK:
 
-// Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, 
+// Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham,
 // orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
 // MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
 
-function palindromCheck(str: string): boolean {
-    const reversed = str.split('').reverse().join('');
-    return str === reversed;
+// function palindromCheck(str: string): boolean {
+//     const reversed = str.split('').reverse().join('');
+//     return str === reversed;
+// }
+
+// console.log(palindromCheck("dad"));   // true
+// console.log(palindromCheck("son"));   // false
+
+// *************************************************************************************************
+// O-TASK:
+
+// Shunday function yozing, u har xil valuelardan iborat array qabul qilsin va array ichidagi
+// sonlar yigindisini hisoblab chiqqan javobni qaytarsin.
+// MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
+
+function calculateSumOfNumbers(array: any[]): number {
+  let sum = 0; // Yig‘indining boshlang‘ich qiymati
+
+  for (let element of array) {
+    if (typeof element === "number") {
+      // Agar element son bo'lsa
+      sum += element;
+    } else if (typeof element === "string" && !isNaN(Number(element))) {
+      // Agar element string bo'lib, son kabi ko'rinsa
+      sum += Number(element);
+    } else if (
+      typeof element === "object" &&
+      element !== null &&
+      "son" in element &&
+      typeof element.son === "number"
+    ) {
+      // Agar element obyekt bo'lib, ichida 'son' qiymati bo'lsa
+      sum += element.son;
+    }
+  }
+
+  return sum; // Yig‘indini qaytarish
 }
 
-console.log(palindromCheck("dad"));   // true
-console.log(palindromCheck("son"));   // false
+// Funksiyani sinash
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); // Javob: 45
+
+
+
+
+
+
+
+
+
+
+
