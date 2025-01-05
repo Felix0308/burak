@@ -159,10 +159,10 @@
 // orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
 // MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
 
-// function palindromCheck(str: string): boolean {
-//     const reversed = str.split('').reverse().join('');
-//     return str === reversed;
-// }
+function palindromCheck(str: string): boolean {
+    const reversed = str.split('').reverse().join('');
+    return str === reversed;
+}
 
-// console.log(palindromCheck("dad"));   // true
-// console.log(palindromCheck("son"));   // false
+console.log(palindromCheck("dad"));   // true
+console.log(palindromCheck("son"));   // false

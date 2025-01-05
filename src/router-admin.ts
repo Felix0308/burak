@@ -22,13 +22,13 @@ routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 /** Product */
 routerAdmin.get(
   "/product/all",
-  restaurantController.verifyRestaurant,
+  restaurantController.verifyRestaurant, // MiddleWare DP: Authorization - sababi bu restaurant typedagi userlar access(kirish) qila oladi
   productController.getAllProducts
 );
 routerAdmin.post(
   "/product/create",
-  restaurantController.verifyRestaurant,
-  makeUploader("products").array("productImages", 5),
+  restaurantController.verifyRestaurant, // MiddleWare: Authorization MiddleWare Function
+  makeUploader("products").array("productImages", 5), // MiddleWare: Multer
   productController.createNewProduct
 );
 routerAdmin.post(

@@ -6,7 +6,7 @@ import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 
-const memberService = new MemberService();
+const memberService = new MemberService();  // MemberService Modeldan instanse olyapmiz va hamma methodlarda ishlatyapmiz
 
 const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
@@ -70,16 +70,18 @@ restaurantController.processSignup = async (
 };
 
 restaurantController.processLogin = async (
+  // restaurantControllerni processLogin methodi async va uni 2 ta parametri bor
   req: AdminRequest,
   res: Response
 ) => {
   try {
-    console.log("processLogin");
+    // async methodlarda try catch ishlatiladi
+    console.log("processLogin"); // mantig'imiz shu yerga kirib kelganini aniqlab beradigon standart
 
-    const input: LoginInput = req.body;
-    const result = await memberService.processLogin(input);
-
-    req.session.member = result;
+    const input: LoginInput = req.body; // kirib kelayotgan requestimizni body qismidan malumotlarni olib const inputga tenglayapmiz, uning type LoginInput
+    const result = await memberService.processLogin(input); // memberService objectni processLogin methodini chaqirib, yuqoridagi inputni argument sifatida path qilyapmiz va kutib resultga tenglayapmiz
+    // quyidagilarni vazifasi: 1- DB gaborib session collectionga yozilyapti. | 2- frontend cookie ga borib SID ni yozyapmiz
+    req.session.member = result;  // yuqorida hosil bo'lgan resultimizni request sessionimizni memberiga tengladik
     req.session.save(function () {
       res.redirect("/admin/product/all");
     });
@@ -131,6 +133,7 @@ restaurantController.updateChosenUser = async (req: Request, res: Response) => {
   }
 };
 
+// Authentication
 restaurantController.checkAuthSession = async (
   req: AdminRequest,
   res: Response
@@ -146,13 +149,14 @@ restaurantController.checkAuthSession = async (
   }
 };
 
+// Authorization
 restaurantController.verifyRestaurant = (
   req: AdminRequest,
   res: Response,
   next: NextFunction
 ) => {
   if (req.session?.member?.memberType === MemberType.RESTAURANT) {
-    req.member = req.session.member;
+    req.member = req.session.member;  // req.memberni boyitdik
     next();
   } else {
     const message = Message.NOT_AUTHENTICATED;

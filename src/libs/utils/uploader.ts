@@ -5,7 +5,7 @@ import { v4 } from "uuid";
 /** MULTER IMAGE UPLOADER */
 function getTargetImageStorage(address: any) {
   return multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function (req, file, cb) {  // cb => callback
       cb(null, `./uploads/${address}`);
     },
     filename: function (req, file, cb) {

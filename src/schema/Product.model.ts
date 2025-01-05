@@ -6,6 +6,14 @@ import {
   ProductVolume,
 } from "../libs/enums/product.enum";
 
+// VALIDATION(tekshirish): 
+// CLIENT VALIDATION (Frontend)
+//  2) DTO VALIDATION (Pipe)
+//  3) SERVER VALIDATION (Backend)
+//  4) SCHEMA VALIDATION (DataBase)
+
+// Cluster => DB => Collection => Document => DataSet
+
 const productSchema = new Schema(
   {
     productStatus: {
@@ -64,6 +72,7 @@ const productSchema = new Schema(
   { timestamps: true }
 );
 
+// COMPOUND UNIQUE => uchtasi birga
 productSchema.index(
   { productName: 1, productSize: 1, productVolume: 1 },
   { unique: true }
