@@ -175,14 +175,14 @@
 // MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
 
 function calculateSumOfNumbers(array: any[]): number {
-  let sum = 0; // Yig‘indining boshlang‘ich qiymati
+  let sum = 0; 
 
   for (let element of array) {
     if (typeof element === "number") {
-      // Agar element son bo'lsa
+     
       sum += element;
     } else if (typeof element === "string" && !isNaN(Number(element))) {
-      // Agar element string bo'lib, son kabi ko'rinsa
+     
       sum += Number(element);
     } else if (
       typeof element === "object" &&
@@ -190,16 +190,16 @@ function calculateSumOfNumbers(array: any[]): number {
       "son" in element &&
       typeof element.son === "number"
     ) {
-      // Agar element obyekt bo'lib, ichida 'son' qiymati bo'lsa
+     
       sum += element.son;
     }
   }
 
-  return sum; // Yig‘indini qaytarish
+  return sum;
 }
 
-// Funksiyani sinash
-console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); // Javob: 45
+//call
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); 
 
 
 
