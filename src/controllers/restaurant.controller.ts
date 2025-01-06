@@ -6,7 +6,7 @@ import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 
-const memberService = new MemberService();  // MemberService Modeldan instanse olyapmiz va hamma methodlarda ishlatyapmiz
+const memberService = new MemberService(); // MemberService Modeldan instanse olyapmiz va hamma methodlarda ishlatyapmiz
 
 const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
@@ -81,7 +81,7 @@ restaurantController.processLogin = async (
     const input: LoginInput = req.body; // kirib kelayotgan requestimizni body qismidan malumotlarni olib const inputga tenglayapmiz, uning type LoginInput
     const result = await memberService.processLogin(input); // memberService objectni processLogin methodini chaqirib, yuqoridagi inputni argument sifatida path qilyapmiz va kutib resultga tenglayapmiz
     // quyidagilarni vazifasi: 1- DB gaborib session collectionga yozilyapti. | 2- frontend cookie ga borib SID ni yozyapmiz
-    req.session.member = result;  // yuqorida hosil bo'lgan resultimizni request sessionimizni memberiga tengladik
+    req.session.member = result; // yuqorida hosil bo'lgan resultimizni request sessionimizni memberiga tengladik
     req.session.save(function () {
       res.redirect("/admin/product/all");
     });
@@ -90,7 +90,7 @@ restaurantController.processLogin = async (
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script> alert("${message}"); window.location.replace('admin/login')</script>`
+      `<script> alert("${message}"); window.location.replace('/admin/login')</script>`
     );
   }
 };
@@ -156,12 +156,12 @@ restaurantController.verifyRestaurant = (
   next: NextFunction
 ) => {
   if (req.session?.member?.memberType === MemberType.RESTAURANT) {
-    req.member = req.session.member;  // req.memberni boyitdik
+    req.member = req.session.member; // req.memberni boyitdik
     next();
   } else {
     const message = Message.NOT_AUTHENTICATED;
     res.send(
-      `<script> alert("${message}"); window.location.replace('admin/login'); </script>`
+      `<script> alert("${message}"); window.location.replace('/admin/login'); </script>`
     );
   }
 };

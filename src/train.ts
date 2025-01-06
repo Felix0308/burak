@@ -63,7 +63,7 @@
  */
 
 /**  Request:
- * Traditional Api
+ * Traditional Api (form POST) => html ni o'zini elementlari orqali amalga oshiriladigon request: form elementi orqali backendga qilinadigon POST requesti
  * Rest Api
  * GraphQl Api
  * ...
