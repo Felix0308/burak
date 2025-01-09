@@ -174,34 +174,48 @@
 // sonlar yigindisini hisoblab chiqqan javobni qaytarsin.
 // MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
 
-function calculateSumOfNumbers(array: any[]): number {
-  let sum = 0; 
+// function calculateSumOfNumbers(array: any[]): number {
+//   let sum = 0; 
 
-  for (let element of array) {
-    if (typeof element === "number") {
+//   for (let element of array) {
+//     if (typeof element === "number") {
      
-      sum += element;
-    } else if (typeof element === "string" && !isNaN(Number(element))) {
+//       sum += element;
+//     } else if (typeof element === "string" && !isNaN(Number(element))) {
      
-      sum += Number(element);
-    } else if (
-      typeof element === "object" &&
-      element !== null &&
-      "son" in element &&
-      typeof element.son === "number"
-    ) {
+//       sum += Number(element);
+//     } else if (
+//       typeof element === "object" &&
+//       element !== null &&
+//       "son" in element &&
+//       typeof element.son === "number"
+//     ) {
      
-      sum += element.son;
-    }
-  }
+//       sum += element.son;
+//     }
+//   }
 
-  return sum;
+//   return sum;
+// }
+
+// //call
+// console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); 
+
+// *************************************************************************************************
+// P-TASK:
+
+// Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
+// MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+function objectToArray(obj: Record<string, any>): [string, any][] {
+    return Object.keys(obj).reduce<[string, any][]>((acc, key) => {
+        acc.push([key, obj[key]]);
+        return acc;
+    }, []);
 }
 
-//call
-console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); 
-
-
+// call
+console.log(objectToArray({ a: 10, b: 20 })); // [['a', 10], ['b', 20]]
 
 
 
