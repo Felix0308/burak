@@ -207,19 +207,31 @@
 // Shunday function yozing, u object qabul qilsin va arrayni object arrayga otkazib arrayni qaytarsin qaytarsin.
 // MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
 
-function objectToArray(obj: Record<string, any>): [string, any][] {
-    return Object.keys(obj).reduce<[string, any][]>((acc, key) => {
-        acc.push([key, obj[key]]);
-        return acc;
-    }, []);
+// function objectToArray(obj: Record<string, any>): [string, any][] {
+//     return Object.keys(obj).reduce<[string, any][]>((acc, key) => {
+//         acc.push([key, obj[key]]);
+//         return acc;
+//     }, []);
+// }
+
+// // call
+// console.log(objectToArray({ a: 10, b: 20 })); // [['a', 10], ['b', 20]]
+
+
+
+// Q-TASK:
+
+// Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string. 
+// Agar string parametr objectni propertysi bolsa true bolmasa false qaytarsin.
+// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
+//         hasProperty({name: "BMW", model: "M3"}, "year") return false
+
+function hasProperty<T extends object>(obj: T, str: string): boolean {
+  return str in obj;
 }
 
-// call
-console.log(objectToArray({ a: 10, b: 20 })); // [['a', 10], ['b', 20]]
-
-
-
-
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
+console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
 
 
 
