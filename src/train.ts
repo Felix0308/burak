@@ -218,7 +218,7 @@
 // console.log(objectToArray({ a: 10, b: 20 })); // [['a', 10], ['b', 20]]
 
 
-
+// *************************************************************************************************
 // Q-TASK:
 
 // Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string. 
@@ -226,14 +226,47 @@
 // MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
 //         hasProperty({name: "BMW", model: "M3"}, "year") return false
 
-function hasProperty<T extends object>(obj: T, str: string): boolean {
-  return str in obj;
+// function hasProperty<T extends object>(obj: T, str: string): boolean {
+//   return str in obj;
+// }
+
+// // call
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
+
+// *************************************************************************************************
+// TASK R
+
+// Shunday function yozing, u string parametrga ega bo'lsin.
+// Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa,
+// string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin
+
+// MASALAN: calculate("1 + 3"); return 4;
+// 1 + 3 = 4, shu sababli 4 natijani qaytarmoqda.
+
+function calculate(expression: string): number {
+  const [a, operator, b] = expression.split(" ");
+  const num1 = parseFloat(a);
+  const num2 = parseFloat(b);
+
+  switch (operator) {
+    case "+":
+      return num1 + num2;
+    case "-":
+      return num1 - num2;
+    case "*":
+      return num1 * num2;
+    case "/":
+      return num2 !== 0 ? num1 / num2 : NaN; // => Nolga bo'lishdan saqlanish
+    default:
+      throw new Error("Invalid operator");
+  }
 }
 
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
-console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
-
-
+console.log(calculate("1 + 3")); // 4
+console.log(calculate("10 - 2")); // 8
+console.log(calculate("4 * 5")); // 20
+console.log(calculate("8 / 2")); // 4
 
 
 
