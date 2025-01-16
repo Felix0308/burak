@@ -244,29 +244,48 @@
 // MASALAN: calculate("1 + 3"); return 4;
 // 1 + 3 = 4, shu sababli 4 natijani qaytarmoqda.
 
-function calculate(expression: string): number {
-  const [a, operator, b] = expression.split(" ");
-  const num1 = parseFloat(a);
-  const num2 = parseFloat(b);
+// function calculate(expression: string): number {
+//   const [a, operator, b] = expression.split(" ");
+//   const num1 = parseFloat(a);
+//   const num2 = parseFloat(b);
 
-  switch (operator) {
-    case "+":
-      return num1 + num2;
-    case "-":
-      return num1 - num2;
-    case "*":
-      return num1 * num2;
-    case "/":
-      return num2 !== 0 ? num1 / num2 : NaN; // => Nolga bo'lishdan saqlanish
-    default:
-      throw new Error("Invalid operator");
+//   switch (operator) {
+//     case "+":
+//       return num1 + num2;
+//     case "-":
+//       return num1 - num2;
+//     case "*":
+//       return num1 * num2;
+//     case "/":
+//       return num2 !== 0 ? num1 / num2 : NaN; // => Nolga bo'lishdan saqlanish
+//     default:
+//       throw new Error("Invalid operator");
+//   }
+// }
+
+// console.log(calculate("1 + 3")); // 4
+// console.log(calculate("10 - 2")); // 8
+// console.log(calculate("4 * 5")); // 20
+// console.log(calculate("8 / 2")); // 4
+
+// *************************************************************************************************
+// S-TASK:
+
+// Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi 
+// tushib qolgan sonni topib uni return qilsin
+// MASALAN: missingNumber([3, 0, 1]) return 2
+
+function missingNumber(nums: number[]): number {
+  nums.sort((a, b) => a - b); 
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== i) {
+      return i;
+    }
   }
+  return nums.length;
 }
 
-console.log(calculate("1 + 3")); // 4
-console.log(calculate("10 - 2")); // 8
-console.log(calculate("4 * 5")); // 20
-console.log(calculate("8 / 2")); // 4
+console.log(missingNumber([3, 0, 1]));
 
 
 
