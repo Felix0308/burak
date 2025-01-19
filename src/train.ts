@@ -275,17 +275,32 @@
 // tushib qolgan sonni topib uni return qilsin
 // MASALAN: missingNumber([3, 0, 1]) return 2
 
-function missingNumber(nums: number[]): number {
-  nums.sort((a, b) => a - b); 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== i) {
-      return i;
-    }
-  }
-  return nums.length;
+// function missingNumber(nums: number[]): number {
+//   nums.sort((a, b) => a - b); 
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== i) {
+//       return i;
+//     }
+//   }
+//   return nums.length;
+// }
+
+// console.log(missingNumber([3, 0, 1]));
+
+// *************************************************************************************************
+// TASK T
+
+// Shunday function tuzing, u sonlardan tashkil topgan 2'ta array qabul qilsin.
+// Va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin.
+
+// MASALAN: mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]); return [0, 3, 4, 4, 6, 30, 31];
+
+// Yuqoridagi misolda, ikkala arrayni birlashtirib, tartib raqam bo'yicha tartiblab qaytarmoqda.
+
+function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+  return [...arr1, ...arr2].sort((a, b) => a - b);
 }
 
-console.log(missingNumber([3, 0, 1]));
+const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
 
-
-
+console.log(result);
