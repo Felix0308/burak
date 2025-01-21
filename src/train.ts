@@ -297,10 +297,31 @@
 
 // Yuqoridagi misolda, ikkala arrayni birlashtirib, tartib raqam bo'yicha tartiblab qaytarmoqda.
 
-function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
-  return [...arr1, ...arr2].sort((a, b) => a - b);
+// function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+//   return [...arr1, ...arr2].sort((a, b) => a - b);
+// }
+
+// const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+
+// console.log(result);
+
+// *************************************************************************************************
+// U-TASK:
+
+// Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi 
+// faqat toq sonlar nechtaligini return qilsin
+// MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
+
+function sumOdds(number: number): number {
+  let count = 0;
+  for (let i = 0; i <= number; i++) {
+    if (i % 2 !== 0) {
+      count++;
+    }
+  }
+  return count;
 }
 
-const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+console.log(sumOdds(9)); 
+console.log(sumOdds(11)); 
 
-console.log(result);
