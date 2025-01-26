@@ -312,18 +312,18 @@
 // faqat toq sonlar nechtaligini return qilsin
 // MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
 
-function sumOdds(number: number): number {
-  let count = 0;
-  for (let i = 0; i <= number; i++) {
-    if (i % 2 !== 0) {
-      count++;
-    }
-  }
-  return count;
-}
+// function sumOdds(number: number): number {
+//   let count = 0;
+//   for (let i = 0; i <= number; i++) {
+//     if (i % 2 !== 0) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
 
-console.log(sumOdds(9)); 
-console.log(sumOdds(11)); 
+// console.log(sumOdds(9)); 
+// console.log(sumOdds(11)); 
 
 // *************************************************************************************************
 // TASK V
@@ -338,15 +338,30 @@ console.log(sumOdds(11));
 // qatnashgan harflar necha marotaba takrorlangini bilan
 // object sifatida qaytarilmoqda.
 
-function countChars(str: string): Record<string, number> {
-  const result: Record<string, number> = {};
-  for (let char of str) {
-    result[char] = (result[char] || 0) + 1;
-  }
+// function countChars(str: string): Record<string, number> {
+//   const result: Record<string, number> = {};
+//   for (let char of str) {
+//     result[char] = (result[char] || 0) + 1;
+//   }
   
+//   return result;
+// }
+
+// console.log(countChars("hello")); 
+
+// *************************************************************************************************
+// W-TASK:
+
+// Shunday function yozing, uni array va number parametrlari bolsin. 
+// Function arrayni numberda berilgan uzunlikda kesib bolaklarga ajratilgan array holatida qaytarsin
+// MASALAN: chunkArray([1,2,3,4,5,6,7,8,9,10], 3) return [[1,2,3], [4,5,6], [7,8,9], [10]]
+
+function chunkArray<T>(array: T[], size: number): T[][] {
+  let result = [];
+  while (array.length) {
+    result.push(array.splice(0, size));
+  }
   return result;
 }
 
-console.log(countChars("hello")); 
-
-
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
