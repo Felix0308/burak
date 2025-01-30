@@ -374,27 +374,40 @@
 //  (nested object bolsa ham sanasin)
 //  MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
 
-function countOccurrencesIterative(obj: Record<string, any>, target: string): number {
-    let count = 0;
-    const stack = [obj];
+// function countOccurrencesIterative(obj: Record<string, any>, target: string): number {
+//     let count = 0;
+//     const stack = [obj];
 
-    while (stack.length > 0) {
-        const currentObj = stack.pop();
-        if (currentObj) {
-            for (const key in currentObj) {
-                if (key === target) {
-                    count++;
-                }
-                if (typeof currentObj[key] === "object" && currentObj[key] !== null) {
-                    stack.push(currentObj[key]);
-                }
-            }
-        }
-    }
+//     while (stack.length > 0) {
+//         const currentObj = stack.pop();
+//         if (currentObj) {
+//             for (const key in currentObj) {
+//                 if (key === target) {
+//                     count++;
+//                 }
+//                 if (typeof currentObj[key] === "object" && currentObj[key] !== null) {
+//                     stack.push(currentObj[key]);
+//                 }
+//             }
+//         }
+//     }
 
-    return count;
+//     return count;
     
+// }
+
+// const data2 = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
+// console.log(countOccurrencesIterative(data2, 'model')); 
+
+// *************************************************************************************************
+// Y-TASK:
+
+//  Shunday function yozing, uni 2 ta array parapetri bolsin. 
+//  Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
+//  MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+    return arr1.filter(num => arr2.includes(num));
 }
 
-const data2 = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
-console.log(countOccurrencesIterative(data2, 'model')); 
+console.log(findIntersection([1, 2, 3], [3, 2, 0])); 

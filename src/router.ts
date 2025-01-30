@@ -20,7 +20,7 @@ router.get(
 router.post(
   "/member/update",
   memberController.verifyAuth,
-  uploader("members").single("memberImage"),
+  uploader("members").single("memberImage"),  // kirib kelayotgan image "uploader" ichidagi "members" folderiga "memberImage" nomi ostida faqat bitta user image yuklash
   memberController.updateMember
 );
 router.get("/member/top-users", memberController.getTopUsers);
