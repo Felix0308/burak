@@ -63,7 +63,31 @@ class ProductService {
       })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    // TODO: If authenticated users => first => view log creation
+    // if (memberId) {
+    //   //  Check Existence
+    //   const input: ViewInput = {
+    //     memberId: memberId,
+    //     viewRefId: productId,
+    //     viewGroup: ViewGroup.PRODUCT,
+    //   };
+    //   const existView = await this.viewService.checkViewExistence(input);
 
+    //   console.log("exist:", !!existView);
+    //   if (!existView) {
+    //     // Insert View
+    //     await this.viewService.insertMemberView(input);
+
+    //     // Increase Counts
+    //     const result2 = await this.productModel
+    //       .findByIdAndUpdate(
+    //         productId,
+    //         { $inc: { productViews: +1 } },
+    //         { new: true }
+    //       )
+    //       .exec();
+    //   }
+    // }
     return result;
   }
 
