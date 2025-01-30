@@ -28,6 +28,12 @@ router.get("/member/top-users", memberController.getTopUsers);
 
 /**Product **/
 router.get("/product/all", productController.getProducts);
+router.get(
+  "/product/:id",
+  memberController.retrieveAuth,  // aynan qaysi product ga borishimiz kerakligini :id (param) orqali belgilaymiz, login bo'lgan va bo'lmagan userlar kira oladi, retrieveAuth => user kirganda viewlar sosnini 1 ga oshirib beradi va qayta kirganda hadeb 1 ga oshiravermaydi
+  productController.getProduct
+); 
+
 /** Order **/
 
 export default router;

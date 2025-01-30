@@ -9,6 +9,7 @@ import {
 } from "../libs/types/product";
 import ProductModel from "../schema/Product.model";
 import { T } from "../libs/types/common";
+import {ObjectId} from "mongoose";
 
 class ProductService {
   private readonly productModel;
@@ -22,9 +23,11 @@ class ProductService {
   public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
     const match: T = { productStatus: ProductStatus.PROCESS };
 
-    if (inquiry.productCollection) // POSTMAN orqali collection yuborilgan bo'lsa
+    if (inquiry.productCollection)
+      // POSTMAN orqali productCollection yuborilgan bo'lsa
       match.productCollection = inquiry.productCollection;
     if (inquiry.search) {
+      // frondentdan search bo'lsa productname ichidan izlash logic
       match.productName = { $regex: new RegExp(inquiry.search, "i") };
     }
 
@@ -35,13 +38,30 @@ class ProductService {
 
     const result = await this.productModel
       .aggregate([
-        { $match: match },  // PROCESSda bo'lgan productlarnigina olib beradi
-        { $sort: sort },  // dinamik holatda keyni olib beradi
+        { $match: match }, // PROCESSda bo'lgan productlarnigina olib beradi
+        { $sort: sort }, // dinamik holatda keyni olib beradi
         { $skip: (inquiry.page * 1 - 1) * inquiry.limit }, // nechtadir malumotni o'tkazib yuborish,  ya'ni barcha malumotni olib ber
-        { $limit: inquiry.limit * 1 },  // nechta ma'lumot kerakligi
+        { $limit: inquiry.limit * 1 }, // nechta ma'lumot kerakligi
       ])
       .exec();
 
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result;
+  }
+
+  public async getProduct(
+    memberId: ObjectId | null,
+    id: string
+  ): Promise<Product> {
+    const productId = shapeIntoMongooseObjectId(id);
+
+    let result = await this.productModel
+      .findOne({
+        _id: productId,
+        productStatus: ProductStatus.PROCESS,
+      })
+      .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
     return result;
