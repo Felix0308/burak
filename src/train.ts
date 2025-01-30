@@ -406,8 +406,8 @@
 //  Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
 //  MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
 
-function findIntersection(arr1: number[], arr2: number[]): number[] {
-    return arr1.filter(num => arr2.includes(num));
-}
+// function findIntersection(arr1: number[], arr2: number[]): number[] {
+//     return arr1.filter(num => arr2.includes(num));
+// }
 
-console.log(findIntersection([1, 2, 3], [3, 2, 0])); 
+// console.log(findIntersection([1, 2, 3], [3, 2, 0])); 
