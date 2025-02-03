@@ -20,12 +20,12 @@ productController.getProducts = async (req: Request, res: Response) => {
       page: Number(page),
       limit: Number(limit),
     };
-    
+
     if (productCollection) {
       inquiry.productCollection = productCollection as ProductCollection;
     }
     if (search) inquiry.search = String(search);
-    
+
     const result = await productService.getProducts(inquiry);
 
     res.status(HttpCode.Ok).json(result);
@@ -51,7 +51,6 @@ productController.getProduct = async (req: ExtendedRequest, res: Response) => {
     else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
-
 
 /** SSR */
 

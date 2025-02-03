@@ -10,7 +10,7 @@ import {
 import ProductModel from "../schema/Product.model";
 import { T } from "../libs/types/common";
 import { ObjectId } from "mongoose";
-import ViewService from "./View.service";
+import ViewService from "./view.service";
 import { ViewInput } from "../libs/types/view";
 import { ViewGroup } from "../libs/enums/view.enum";
 
@@ -37,8 +37,8 @@ class ProductService {
 
     const sort: T =
       inquiry.order === "productPrice"
-        ? { [inquiry.order]: 1 } // eng arzonidan boshlab yuqoriga
-        : { [inquiry.order]: -1 }; // eng oxirgi qo'shilgandan pastga qarab
+        ? { [inquiry.order]: 1 } // agar productPrice orderga teng bo'lsa eng arzonidan boshlab yuqoriga
+        : { [inquiry.order]: -1 }; // agar productPrice dan boshqasiga teng bo'lsa eng oxirgi qo'shilgandan pastga qarab
 
     const result = await this.productModel
       .aggregate([
