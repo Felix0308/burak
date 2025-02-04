@@ -3,9 +3,9 @@ import OrderModel from "../schema/Order.model";
 import { Member } from "../libs/types/member";
 import {
   Order,
-//   OrderInquiry,
+  OrderInquiry,
   OrderItemInput,
-//   OrderUpdateInput,
+  OrderUpdateInput,
 } from "../libs/types/order";
 import { shapeIntoMongooseObjectId } from "../libs/config";
 import Errors, { HttpCode, Message } from "../libs/Errors";
@@ -16,12 +16,10 @@ import MemberService from "./Member.service";
 class OrderService {
   private readonly orderModel;
   private readonly orderItemModel;
-//   private readonly memberService;
 
   constructor() {
     this.orderModel = OrderModel;
     this.orderItemModel = OrderItemModel;
-    // this.memberService = new MemberService();
   }
 
   public async createOrder(
@@ -42,8 +40,8 @@ class OrderService {
         orderDelivery: delivery,
         memberId: memberId,
       });
-      
-    //   console.log("orderId:", newOrder._id);
+
+      //   console.log("orderId:", newOrder._id);
       // TODO: create order items
       const orderId = newOrder._id;
       console.log("orderId:", orderId);
@@ -67,11 +65,47 @@ class OrderService {
     });
 
     console.log("promisedList:", promisedList);
-    
+
     const orderItemState = await Promise.all(promisedList);
     console.log("orserItemsState:", orderItemState);
   }
 
+  public async getMyOrders(
+    member: Member,
+    inquiry: OrderInquiry
+  ): Promise<Order[]> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
+    const matches = { memberId: memberId, orderStatus: inquiry.orderStatus };
+
+    const result = await this.orderModel
+      .aggregate([
+        { $match: matches },
+        { $sort: { updateAt: -1 } },
+        { $skip: (inquiry.page - 1) * inquiry.limit },
+        { $limit: inquiry.limit },
+        {
+          $lookup: {
+            // aggregate da topilgan mahsulotni har bittasini ichida iteration qilish imkonini beradi
+            // har bitta iteration qilganda boshqa collectionga borib ma'lumotlarni topib berish imkoniyatini beradi.
+            from: "orderItems", // qaysi collectiondan lookup qilishi
+            localField: "_id", // qanaday qiymatni lookup qilishi
+            foreignField: "orderId", // boshqa collectionda qatnashgan orderId datasetni valuesiga teng bo'lgan holatni topib beradi.
+            as: "orderItems", // orderItems nomi ostida saqlab beradi
+          },
+        },
+        {
+          $lookup: {
+            from: "products", // products dan izlaydi
+            localField: "orderItems.productId",  // nimadan iborat
+            foreignField: "_id",  // qaysi nom bilan izlashi
+            as: "productData",  // shu nom bilan saqlaydi
+          },
+        },
+      ])
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result;
+  }
 }
 
 export default OrderService;
