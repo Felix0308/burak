@@ -16,10 +16,12 @@ import MemberService from "./Member.service";
 class OrderService {
   private readonly orderModel;
   private readonly orderItemModel;
+  private readonly memberService;
 
   constructor() {
     this.orderModel = OrderModel;
     this.orderItemModel = OrderItemModel;
+    this.memberService = new MemberService();
   }
 
   public async createOrder(
@@ -96,14 +98,42 @@ class OrderService {
         {
           $lookup: {
             from: "products", // products dan izlaydi
-            localField: "orderItems.productId",  // nimadan iborat
-            foreignField: "_id",  // qaysi nom bilan izlashi
-            as: "productData",  // shu nom bilan saqlaydi
+            localField: "orderItems.productId", // nimadan iborat
+            foreignField: "_id", // qaysi nom bilan izlashi
+            as: "productData", // shu nom bilan saqlaydi
           },
         },
       ])
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result;
+  }
+
+  public async updateOrder(
+    member: Member,
+    input: OrderUpdateInput
+  ): Promise<Order> {
+    const memberId = shapeIntoMongooseObjectId(member._id),
+      orderId = shapeIntoMongooseObjectId(input.orderId),
+      orderStatus = input.orderStatus;
+
+    const result = await this.orderModel
+      .findOneAndUpdate(
+        {
+          memberId: memberId,
+          _id: orderId,
+        },
+        { orderStatus: orderStatus },
+        { new: true }
+      )
+      .exec();
+
+    if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+
+    // orderStatus PAUSE => PROCESS +1
+    if (orderStatus === OrderStatus.PROCESS) {
+      await this.memberService.addUserPoint(member, 1); // (member, 1)/(member, +1) => qaysi member ekanligi va pointini 1 ga oshirish logic
+    }
     return result;
   }
 }
