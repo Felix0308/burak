@@ -3,6 +3,7 @@ const router = express.Router();
 import memberController from "./controllers/member.controller";
 import uploader from "./libs/utils/uploader";
 import productController from "./controllers/product.controller";
+import orderController from "./controllers/order.controller";
 
 /** Member **/
 router.get("/member/restaurant", memberController.getRestaurant);
@@ -30,10 +31,15 @@ router.get("/member/top-users", memberController.getTopUsers);
 router.get("/product/all", productController.getProducts);
 router.get(
   "/product/:id",
-  memberController.retrieveAuth,  // aynan qaysi product ga borishimiz kerakligini :id (param) orqali belgilaymiz, login bo'lgan va bo'lmagan userlar kira oladi, retrieveAuth => user kirganda viewlar sosnini 1 ga oshirib beradi va qayta kirganda hadeb 1 ga oshiravermaydi
+  memberController.retrieveAuth, // aynan qaysi product ga borishimiz kerakligini :id (param) orqali belgilaymiz, login bo'lgan va bo'lmagan userlar kira oladi, retrieveAuth => user kirganda viewlar sosnini 1 ga oshirib beradi va qayta kirganda hadeb 1 ga oshiravermaydi
   productController.getProduct
-); 
+);
 
 /** Order **/
+router.post(
+  "/order/create",
+  memberController.verifyAuth,
+  orderController.createOrder
+);
 
 export default router;
