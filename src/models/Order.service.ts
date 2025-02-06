@@ -33,7 +33,10 @@ class OrderService {
     const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
       return accumulator + item.itemPrice * item.itemQuantity;
     }, 0);
-    const delivery = amount < 100 ? 5 : 0;
+    const delivery = amount < 100 ? 5 : 0;  
+    // agar harid 100 dan kam bo'lsa dastafka mavjud(5$), 
+    // agar harid 100 dan oshsa dastafka tekin qilib berish logici 
+    
     // console.log("values:", amount, delivery);
 
     try {
@@ -82,7 +85,7 @@ class OrderService {
     const result = await this.orderModel
       .aggregate([
         { $match: matches },
-        { $sort: { updateAt: -1 } },
+        { $sort: { updatedAt: -1 } },
         { $skip: (inquiry.page - 1) * inquiry.limit },
         { $limit: inquiry.limit },
         {

@@ -426,23 +426,35 @@
 // faqatgina juft bo'lgan sonlarni topib, ularni hisoblab yig'indisini qaytarmoqda.
 
 // 1-usul: For loop bilan
-function sumEvensForLoop(numbers: number[]): number {
-    let sum = 0;
-    for (let num of numbers) {
-        if (num % 2 === 0) {
-            sum += num;
-        }
-    }
-    return sum;
-}
+// function sumEvensForLoop(numbers: number[]): number {
+//     let sum = 0;
+//     for (let num of numbers) {
+//         if (num % 2 === 0) {
+//             sum += num;
+//         }
+//     }
+//     return sum;
+// }
 
-console.log(sumEvensForLoop([1, 2, 3]));
-console.log(sumEvensForLoop([1, 2, 3, 2]));
+// console.log(sumEvensForLoop([1, 2, 3]));
+// console.log(sumEvensForLoop([1, 2, 3, 2]));
 
 // 2-usul: Filter va reduce bilan
-function sumEvensFilterReduce(numbers: number[]): number {
-   return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+// function sumEvensFilterReduce(numbers: number[]): number {
+//    return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+// }
+
+// console.log(sumEvensFilterReduce([1, 2, 3]));
+// console.log(sumEvensFilterReduce([1, 2, 3, 2]));
+
+// *************************************************************************************************
+// ZA-TASK:
+
+// Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
+// MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}]
+
+function sortByAge(arr: { age: number }[]): { age: number }[] {
+    return arr.sort((a, b) => a.age - b.age);
 }
 
-console.log(sumEvensFilterReduce([1, 2, 3]));
-console.log(sumEvensFilterReduce([1, 2, 3, 2]));
+console.log(sortByAge([{ age: 23 }, { age: 21 }, { age: 13 }]));

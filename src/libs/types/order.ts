@@ -8,7 +8,7 @@ export interface OrderItem {
   itemPrice: number;
   orderId: ObjectId;
   productId: ObjectId;
-  createdAt: Date;
+  createdAt: Date;     
   updatedAt: Date;
 }
 
@@ -18,7 +18,7 @@ export interface Order {
   orderDelivery: number;
   orderStatus: OrderStatus;
   memberId: ObjectId;
-  createdAt: Date;
+  createdAt: Date;      // createdAt ni mongoDB automatic qurib beradi
   updatedAt: Date;
   /** from aggregations **/
   orderItems: OrderItem[];
