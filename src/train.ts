@@ -175,14 +175,14 @@
 // MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
 
 // function calculateSumOfNumbers(array: any[]): number {
-//   let sum = 0; 
+//   let sum = 0;
 
 //   for (let element of array) {
 //     if (typeof element === "number") {
-     
+
 //       sum += element;
 //     } else if (typeof element === "string" && !isNaN(Number(element))) {
-     
+
 //       sum += Number(element);
 //     } else if (
 //       typeof element === "object" &&
@@ -190,7 +190,7 @@
 //       "son" in element &&
 //       typeof element.son === "number"
 //     ) {
-     
+
 //       sum += element.son;
 //     }
 //   }
@@ -199,7 +199,7 @@
 // }
 
 // //call
-// console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35])); 
+// console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
 
 // *************************************************************************************************
 // P-TASK:
@@ -217,13 +217,12 @@
 // // call
 // console.log(objectToArray({ a: 10, b: 20 })); // [['a', 10], ['b', 20]]
 
-
 // *************************************************************************************************
 // Q-TASK:
 
-// Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string. 
+// Shunday function yozing, u 2 ta parametrgga ega bolib birinchisi object, ikkinchisi string.
 // Agar string parametr objectni propertysi bolsa true bolmasa false qaytarsin.
-// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true; 
+// MASALAN: hasProperty({name: "BMW", model: "M3"}, "model") return true;
 //         hasProperty({name: "BMW", model: "M3"}, "year") return false
 
 // function hasProperty<T extends object>(obj: T, str: string): boolean {
@@ -271,12 +270,12 @@
 // *************************************************************************************************
 // S-TASK:
 
-// Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi 
+// Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi
 // tushib qolgan sonni topib uni return qilsin
 // MASALAN: missingNumber([3, 0, 1]) return 2
 
 // function missingNumber(nums: number[]): number {
-//   nums.sort((a, b) => a - b); 
+//   nums.sort((a, b) => a - b);
 //   for (let i = 0; i < nums.length; i++) {
 //     if (nums[i] !== i) {
 //       return i;
@@ -308,7 +307,7 @@
 // *************************************************************************************************
 // U-TASK:
 
-// Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi 
+// Shunday function yozing, uni number parametri bolsin va 0 dan berilgan parametrgacha bolgan oraliqdagi
 // faqat toq sonlar nechtaligini return qilsin
 // MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
 
@@ -322,8 +321,8 @@
 //   return count;
 // }
 
-// console.log(sumOdds(9)); 
-// console.log(sumOdds(11)); 
+// console.log(sumOdds(9));
+// console.log(sumOdds(11));
 
 // *************************************************************************************************
 // TASK V
@@ -331,7 +330,7 @@
 // Shunday function yozing, uni string parametri bo'lsin.
 // Va bu function stringdagi har bir harfni o'zi bilan
 // necha marotaba taktorlanganligini ko'rsatuvchi object qaytarsin.
-  
+
 // MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
 
 // Yuqoridagi misolda, 'hello' so'zi tarkibida
@@ -343,16 +342,16 @@
 //   for (let char of str) {
 //     result[char] = (result[char] || 0) + 1;
 //   }
-  
+
 //   return result;
 // }
 
-// console.log(countChars("hello")); 
+// console.log(countChars("hello"));
 
 // *************************************************************************************************
 // W-TASK:
 
-// Shunday function yozing, uni array va number parametrlari bolsin. 
+// Shunday function yozing, uni array va number parametrlari bolsin.
 // Function arrayni numberda berilgan uzunlikda kesib bolaklarga ajratilgan array holatida qaytarsin
 // MASALAN: chunkArray([1,2,3,4,5,6,7,8,9,10], 3) return [[1,2,3], [4,5,6], [7,8,9], [10]]
 
@@ -369,8 +368,8 @@
 // *************************************************************************************************
 // X-TASK:
 
-//  Shunday function yozing, uni object va string parapetrlari bolsin. 
-//  Function string parametri object ichida necha marotaba takrorlanganligini qaytarsin 
+//  Shunday function yozing, uni object va string parapetrlari bolsin.
+//  Function string parametri object ichida necha marotaba takrorlanganligini qaytarsin
 //  (nested object bolsa ham sanasin)
 //  MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
 
@@ -393,16 +392,16 @@
 //     }
 
 //     return count;
-    
+
 // }
 
 // const data2 = { model: 'Bugatti', steer: { model: 'HANKOOK', size: 30 } };
-// console.log(countOccurrencesIterative(data2, 'model')); 
+// console.log(countOccurrencesIterative(data2, 'model'));
 
 // *************************************************************************************************
 // Y-TASK:
 
-//  Shunday function yozing, uni 2 ta array parapetri bolsin. 
+//  Shunday function yozing, uni 2 ta array parapetri bolsin.
 //  Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
 //  MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
 
@@ -410,19 +409,19 @@
 //     return arr1.filter(num => arr2.includes(num));
 // }
 
-// console.log(findIntersection([1, 2, 3], [3, 2, 0])); 
+// console.log(findIntersection([1, 2, 3], [3, 2, 0]));
 
 // *************************************************************************************************
 // TASK Z
 
-// Shunday function yozing. Bu function sonlardan iborat arrayqabul qilsin. 
+// Shunday function yozing. Bu function sonlardan iborat arrayqabul qilsin.
 // Function'ning vazifasi array tarkibidagi juft sonlarni topib ularni yig'disini qaytarsin.
 
 // MASALAN:
 // sumEvens([1, 2, 3]); return 2;
 // sumEvens([1, 2, 3, 2]); return 4;
 
-// Yuqoridagi misolda, bizning funktsiya berilayotgan array tarkibidagi sonlar ichidan 
+// Yuqoridagi misolda, bizning funktsiya berilayotgan array tarkibidagi sonlar ichidan
 // faqatgina juft bo'lgan sonlarni topib, ularni hisoblab yig'indisini qaytarmoqda.
 
 // 1-usul: For loop bilan
@@ -450,7 +449,7 @@
 // *************************************************************************************************
 // ZA-TASK:
 
-// Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
+// Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin.
 // MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}]
 
 // function sortByAge(arr: { age: number }[]): { age: number }[] {
@@ -462,12 +461,36 @@
 // *************************************************************************************************
 // ZC-TASK:
 
-// Shunday function yozing, uni number parametri bolsin va function qabul parametrni 
+// Shunday function yozing, uni number parametri bolsin va function qabul parametrni
 // selsiy miqdori sifatida qabul qilib uni farenhitga ozgartirib bersin
 // MASALAN: celsiusToFahrenheit(0) return 32
 
-function celsiusToFahrenheit(celsius: number): number {
-    return (celsius * 9/5) + 32;
+// function celsiusToFahrenheit(celsius: number): number {
+//     return (celsius * 9/5) + 32;
+// }
+
+// console.log(celsiusToFahrenheit(0));
+
+// *************************************************************************************************
+// ZD-TASK:
+
+// Shunday function yozing, uni number, array va number parametrlari bolsin va
+// berilgan 1-parametr numberga teng indexni array ichidan topib
+// 3-parametrdagi raqam bilan almashtirib yangilangan arrayni qaytarsin
+// MASALAN: changeNumberInArray(1, [1,3,7,2], 2) return [1,2,7,2]
+
+function changeNumberInArray(
+  target: number,
+  arr: number[],
+  newValue: number
+): number[] {
+  const newArr = [...arr];
+  const index = newArr.indexOf(target);
+  if (index !== -1) {
+    newArr[index] = newValue;
+  }
+  return newArr;
 }
 
-console.log(celsiusToFahrenheit(0));  
+// call
+console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
