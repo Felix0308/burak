@@ -479,18 +479,31 @@
 // 3-parametrdagi raqam bilan almashtirib yangilangan arrayni qaytarsin
 // MASALAN: changeNumberInArray(1, [1,3,7,2], 2) return [1,2,7,2]
 
-function changeNumberInArray(
-  target: number,
-  arr: number[],
-  newValue: number
-): number[] {
-  const newArr = [...arr];
-  const index = newArr.indexOf(target);
-  if (index !== -1) {
-    newArr[index] = newValue;
-  }
-  return newArr;
+// function changeNumberInArray(
+//   target: number,
+//   arr: number[],
+//   newValue: number
+// ): number[] {
+//   const newArr = [...arr];
+//   const index = newArr.indexOf(target);
+//   if (index !== -1) {
+//     newArr[index] = newValue;
+//   }
+//   return newArr;
+// }
+
+// // call
+// console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
+
+// *************************************************************************************************
+// ZE-TASK:
+
+// Shunday function yozing, uni  string parametri bolsin. String ichida 
+// takrorlangan harflarni olib tashlab qolganini qaytarsin
+// MASALAN: removeDuplicate('stringg') return 'string'
+
+function removeDuplicate(str: string): string {
+    return [...new Set(str)].join('');
 }
 
-// call
-console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
+console.log(removeDuplicate('stringg'));
