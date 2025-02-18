@@ -502,8 +502,28 @@
 // takrorlangan harflarni olib tashlab qolganini qaytarsin
 // MASALAN: removeDuplicate('stringg') return 'string'
 
-function removeDuplicate(str: string): string {
-    return [...new Set(str)].join('');
+// function removeDuplicate(str: string): string {
+//     return [...new Set(str)].join('');
+// }
+
+// console.log(removeDuplicate('stringg'));
+
+// *************************************************************************************************
+// ZF-TASK:
+
+// Shunday function yozing, uni string parametri bolsin. String ichidagi 
+// har bir sozni bosh harflarini katta harf qilib qaytarsin 
+// lekin 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
+// MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String'
+
+function capitalizeWordsForLoop(str: string): string {
+    let words = str.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        if (words[i].length > 2) {
+            words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+        }
+    }
+    return words.join(" ");
 }
 
-console.log(removeDuplicate('stringg'));
+console.log(capitalizeWordsForLoop("name should be a string")); 
