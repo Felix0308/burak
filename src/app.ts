@@ -26,7 +26,8 @@ app.use("/uploads", express.static("./uploads")); // memberimizni rasmini olamiz
 app.use(express.urlencoded({ extended: true })); // traditional API larga xizmat qiladi. Bu middleware form orqali yuborilgan ma'lumotlarni body parser yordamida o'qishga imkon beradi.{extended: true} - bu qism nested objects (murakkab obyektlar) bilan ishlashga ruxsat beradi. Masalan, form orqali yuborilgan ma'lumotlar serverda req.body orqali olinadi.
 app.use(express.json()); // rest API larga xizmat qiladi. rest api sifatida request bo'layotgan datalarni bodysida kelayotgan json datani o'tkazishga ruxsat beryapti
 app.use(
-  cors({  // ixtiyoriy domendan kelayotgan requestlarni bizni serverga kirishga ruxsat beradi
+  cors({
+    // ixtiyoriy domendan kelayotgan requestlarni bizni serverga kirishga ruxsat beradi
     credentials: true,
     origin: true,
   })

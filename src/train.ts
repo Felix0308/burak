@@ -516,14 +516,26 @@
 // lekin 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
 // MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String'
 
-function capitalizeWordsForLoop(str: string): string {
-    let words = str.split(" ");
-    for (let i = 0; i < words.length; i++) {
-        if (words[i].length > 2) {
-            words[i] = words[i][0].toUpperCase() + words[i].slice(1);
-        }
-    }
-    return words.join(" ");
+// function capitalizeWordsForLoop(str: string): string {
+//     let words = str.split(" ");
+//     for (let i = 0; i < words.length; i++) {
+//         if (words[i].length > 2) {
+//             words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+//         }
+//     }
+//     return words.join(" ");
+// }
+
+// console.log(capitalizeWordsForLoop("name should be a string")); 
+
+// *************************************************************************************************
+// ZG-TASK:
+
+// Shunday function yozing, u berilgan string parametrni snake casega otkazib qaytarsin. 
+// MASALAN: capitalizeWords('name should be a string') return 'name_should_be_a_string'
+
+function toSnakeCase(str: string): string {
+    return str.toLowerCase().split(' ').join('_');
 }
 
-console.log(capitalizeWordsForLoop("name should be a string")); 
+console.log(toSnakeCase('name should be a string')); 

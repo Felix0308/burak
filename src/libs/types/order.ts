@@ -7,7 +7,7 @@ export interface OrderItem {
   itemQuantity: number;
   itemPrice: number;
   orderId: ObjectId;
-  productId: ObjectId;
+  productId: ObjectId; 
   createdAt: Date;     
   updatedAt: Date;
 }
