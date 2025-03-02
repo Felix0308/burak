@@ -547,17 +547,32 @@
 // raqamgacha tushib qolgan raqamlarni bir arrayda qaytarsin. 
 // MASALAN: findDisappearedNumbers([1, 3, 4, 7]) return [2, 5, 6]
 
-function findDisappearedNumbers(arr: number[]): number[] {
-    let max = Math.max(...arr);
-    let missing: number[] = [];
+// function findDisappearedNumbers(arr: number[]): number[] {
+//     let max = Math.max(...arr);
+//     let missing: number[] = [];
     
-    for (let i = 1; i <= max; i++) {
-        if (!arr.includes(i)) {
-            missing.push(i);
-        }
-    }
+//     for (let i = 1; i <= max; i++) {
+//         if (!arr.includes(i)) {
+//             missing.push(i);
+//         }
+//     }
     
-    return missing;
+//     return missing;
+// }
+
+// console.log(findDisappearedNumbers([1, 3, 4, 7]));
+
+// *************************************************************************************************
+// ZI-TASK:
+
+// Shunday function yozing, u function ishga tushgandan 3 soniyadan keyin 
+// "Hello World" ni qaytarsin.
+// MASALAN: delayHelloWorld("Hello World") return "Hello World"
+
+function delayHelloWorld(message: string): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(message), 3000);
+  });
 }
 
-console.log(findDisappearedNumbers([1, 3, 4, 7]));
+delayHelloWorld("Hello World").then(console.log);
