@@ -569,10 +569,39 @@
 // "Hello World" ni qaytarsin.
 // MASALAN: delayHelloWorld("Hello World") return "Hello World"
 
-function delayHelloWorld(message: string): Promise<string> {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(message), 3000);
-  });
+// function delayHelloWorld(message: string): Promise<string> {
+//   return new Promise((resolve) => {
+//     setTimeout(() => resolve(message), 3000);
+//   });
+// }
+
+// delayHelloWorld("Hello World").then(console.log);
+
+// *************************************************************************************************
+// TASK ZJ:
+
+// Shunday function yozing, u berilgan array ichidagi
+// raqamlarni qiymatini hisoblab qaytarsin.
+
+// MASALAN: reduceNestedArray([1, [1, 2, [4]]]); return 8;
+
+// Yuqoridagi misolda, array nested bo'lgan holdatda ham,
+// bizning function ularning yig'indisini hisoblab qaytarmoqda.
+
+function reduceNestedArrayIterative(arr: any[]): number {
+    let sum = 0;
+    let stack = [...arr];
+
+    while (stack.length) {
+        let item = stack.pop();
+        if (Array.isArray(item)) {
+            stack.push(...item);
+        } else {
+            sum += item;
+        }
+    }
+
+    return sum;
 }
 
-delayHelloWorld("Hello World").then(console.log);
+console.log(reduceNestedArrayIterative([1, [1, 2, [4]]]));
