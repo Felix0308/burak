@@ -588,20 +588,39 @@
 // Yuqoridagi misolda, array nested bo'lgan holdatda ham,
 // bizning function ularning yig'indisini hisoblab qaytarmoqda.
 
-function reduceNestedArrayIterative(arr: any[]): number {
-    let sum = 0;
-    let stack = [...arr];
+// function reduceNestedArrayIterative(arr: any[]): number {
+//     let sum = 0;
+//     let stack = [...arr];
 
-    while (stack.length) {
-        let item = stack.pop();
-        if (Array.isArray(item)) {
-            stack.push(...item);
-        } else {
-            sum += item;
-        }
+//     while (stack.length) {
+//         let item = stack.pop();
+//         if (Array.isArray(item)) {
+//             stack.push(...item);
+//         } else {
+//             sum += item;
+//         }
+//     }
+
+//     return sum;
+// }
+
+// console.log(reduceNestedArrayIterative([1, [1, 2, [4]]]));
+
+// *************************************************************************************************
+// ZK-TASK:
+
+// Shunday function yozing, u har soniyada bir marta consolega 1 dan 5 gacha bolgan 
+// raqamlarni chop etsin va 5 soniyadan keyin ishini toxtatsin.
+// MASALAN: printNumbers()
+
+function printNumbers() {
+  let count = 1;
+  const timer = setInterval(() => {
+    console.log(count);
+    if (count++ === 5) {
+      clearInterval(timer);
     }
-
-    return sum;
+  }, 1000);
 }
 
-console.log(reduceNestedArrayIterative([1, [1, 2, [4]]]));
+printNumbers();
