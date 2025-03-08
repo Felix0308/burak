@@ -613,14 +613,28 @@
 // raqamlarni chop etsin va 5 soniyadan keyin ishini toxtatsin.
 // MASALAN: printNumbers()
 
-function printNumbers() {
-  let count = 1;
-  const timer = setInterval(() => {
-    console.log(count);
-    if (count++ === 5) {
-      clearInterval(timer);
-    }
-  }, 1000);
+// function printNumbers() {
+//   let count = 1;
+//   const timer = setInterval(() => {
+//     console.log(count);
+//     if (count++ === 5) {
+//       clearInterval(timer);
+//     }
+//   }, 1000);
+// }
+
+// printNumbers();
+
+// *************************************************************************************************
+// ZL-TASK:
+
+// Shunday function yozing, u parametrda berilgan stringni kebab casega 
+// otkazib qaytarsin. Bosh harflarni kichik harflarga ham otkazsin.
+// MASALAN: stringToKebab(“I love Kebab”) return “i-love-kebab”
+
+function stringToKebab(str: string): string {
+  return str.toLowerCase().split(' ').join('-');
 }
 
-printNumbers();
+console.log(stringToKebab("I love Kebab")); 
+
