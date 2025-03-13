@@ -632,9 +632,29 @@
 // otkazib qaytarsin. Bosh harflarni kichik harflarga ham otkazsin.
 // MASALAN: stringToKebab(“I love Kebab”) return “i-love-kebab”
 
-function stringToKebab(str: string): string {
-  return str.toLowerCase().split(' ').join('-');
+// function stringToKebab(str: string): string {
+//   return str.toLowerCase().split(' ').join('-');
+// }
+
+// console.log(stringToKebab("I love Kebab")); 
+
+// *************************************************************************************************
+// TASK ZM:
+
+// Shunday function yozing, va bu function parametr
+// sifatida raqamlarni qabul qilsin. Bu function qabul qilingan
+// raqamlarni orqasiga o'girib qaytarsin
+
+// MASALAN: reverseInteger(123456789); return 987654321;
+
+// Yuqoridagi misolda, function kiritilgan raqamlarni orqasiga
+// o'girib (reverse) qilib qaytarmoqda.
+
+function reverseInteger(num: number): number {
+    return parseInt(num.toString().split('').reverse().join(''), 10);  
+    // bu yerdagi 10 soni number ni qaysi sanoq sistemasida ekanligini bildiradi
 }
 
-console.log(stringToKebab("I love Kebab")); 
+console.log(reverseInteger(123456789)); 
+
 
