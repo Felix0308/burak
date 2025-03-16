@@ -650,11 +650,22 @@
 // Yuqoridagi misolda, function kiritilgan raqamlarni orqasiga
 // o'girib (reverse) qilib qaytarmoqda.
 
-function reverseInteger(num: number): number {
-    return parseInt(num.toString().split('').reverse().join(''), 10);  
-    // bu yerdagi 10 soni number ni qaysi sanoq sistemasida ekanligini bildiradi
+// function reverseInteger(num: number): number {
+//     return parseInt(num.toString().split('').reverse().join(''), 10);  
+     // bu yerdagi 10 soni number ni qaysi sanoq sistemasida ekanligini bildiradi
+// }
+
+// console.log(reverseInteger(123456789)); 
+
+// *************************************************************************************************
+// ZN-TASK:
+
+// Shunday function yozing, uni array va number parametri bolsin. Ikkinchi parametrda 
+// berilgan raqamli indexgacha arrayni orqasiga ogirib qaytarsin.
+// MASALAN: rotateArray([1, 2, 3, 4, 5, 6], 3) return [5, 6, 1, 2, 3, 4]
+
+function rotateArray(arr: any[], index: number): any[] {
+    return [...arr.slice(-index), ...arr.slice(0, -index)];
 }
 
-console.log(reverseInteger(123456789)); 
-
-
+console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
