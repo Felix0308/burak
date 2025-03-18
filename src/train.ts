@@ -669,3 +669,26 @@ function rotateArray(arr: any[], index: number): any[] {
 }
 
 console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
+
+// *************************************************************************************************
+// ZO-TASK:
+
+// Shunday function yozing, u parametrdagi string ichidagi qavslar miqdori 
+// balansda ekanligini aniqlasin. Ya'ni ochish("(") va yopish(")") qavslar 
+// soni bir xil bolishi kerak.
+// MASALAN: areParenthesesBalanced("string()ichida(qavslar)soni()balansda") return true
+
+function areParenthesesBalanced(s: string): boolean {
+    let count = 0;
+    for (const char of s) {
+        if (char === "(") count++;
+        else if (char === ")") count--;
+        if (count < 0) return false; 
+    }
+    return count === 0;
+}
+
+console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"));
+console.log(areParenthesesBalanced("(test) (text))"));
+console.log(areParenthesesBalanced("((a+b)*(c-d))"));
+console.log(areParenthesesBalanced(")("));
