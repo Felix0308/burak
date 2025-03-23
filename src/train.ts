@@ -664,11 +664,11 @@
 // berilgan raqamli indexgacha arrayni orqasiga ogirib qaytarsin.
 // MASALAN: rotateArray([1, 2, 3, 4, 5, 6], 3) return [5, 6, 1, 2, 3, 4]
 
-function rotateArray(arr: any[], index: number): any[] {
-    return [...arr.slice(-index), ...arr.slice(0, -index)];
-}
+// function rotateArray(arr: any[], index: number): any[] {
+//     return [...arr.slice(-index), ...arr.slice(0, -index)];
+// }
 
-console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
+// console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
 
 // *************************************************************************************************
 // ZO-TASK:
@@ -678,17 +678,37 @@ console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
 // soni bir xil bolishi kerak.
 // MASALAN: areParenthesesBalanced("string()ichida(qavslar)soni()balansda") return true
 
-function areParenthesesBalanced(s: string): boolean {
-    let count = 0;
-    for (const char of s) {
-        if (char === "(") count++;
-        else if (char === ")") count--;
-        if (count < 0) return false; 
-    }
-    return count === 0;
+// function areParenthesesBalanced(s: string): boolean {
+//     let count = 0;
+//     for (const char of s) {
+//         if (char === "(") count++;
+//         else if (char === ")") count--;
+//         if (count < 0) return false; 
+//     }
+//     return count === 0;
+// }
+
+// console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"));
+// console.log(areParenthesesBalanced("(test) (text))"));
+// console.log(areParenthesesBalanced("((a+b)*(c-d))"));
+// console.log(areParenthesesBalanced(")("));
+
+// *************************************************************************************************
+// Shunday function yozing, u 2 ta array parametr qabul qilsin.
+// Siz bu ikki arrayning qiymatlari o'xshash bo'lishini 
+// (ya'ni, ularning barcha elementlari bir xil bo'lishini) tekshirishingiz kerak.
+
+// MASALAN:
+// areArraysEqual([1, 2, 3], [3, 1, 2]) // true
+// areArraysEqual([1, 2, 3], [3, 1, 2, 1]) // true
+// areArraysEqual([1, 2, 3], [4, 1, 2]) // false
+
+function areArraysEqual(arr1: number[], arr2: number[]): boolean {
+  if (arr1.length !== arr2.length) return false;
+
+  return arr1.sort().join(',') === arr2.sort().join(',');
 }
 
-console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"));
-console.log(areParenthesesBalanced("(test) (text))"));
-console.log(areParenthesesBalanced("((a+b)*(c-d))"));
-console.log(areParenthesesBalanced(")("));
+console.log(areArraysEqual([1, 2, 3], [3, 1, 2])); // true
+console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1])); // false
+console.log(areArraysEqual([1, 2, 3], [4, 1, 2])); // false
