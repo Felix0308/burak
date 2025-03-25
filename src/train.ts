@@ -703,12 +703,33 @@
 // areArraysEqual([1, 2, 3], [3, 1, 2, 1]) // true
 // areArraysEqual([1, 2, 3], [4, 1, 2]) // false
 
-function areArraysEqual(arr1: number[], arr2: number[]): boolean {
-  if (arr1.length !== arr2.length) return false;
+// function areArraysEqual(arr1: number[], arr2: number[]): boolean {
+//   if (arr1.length !== arr2.length) return false;
 
-  return arr1.sort().join(',') === arr2.sort().join(',');
+//   return arr1.sort().join(',') === arr2.sort().join(',');
+// }
+
+// console.log(areArraysEqual([1, 2, 3], [3, 1, 2])); // true
+// console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1])); // false
+// console.log(areArraysEqual([1, 2, 3], [4, 1, 2])); // false
+
+// *************************************************************************************************
+// ZQ-TASK:
+
+// Shunday function yozing, u parametridagi array ichida 2 marta qaytarilgan sonlarni alohida araryda qaytarsin.
+// MASALAN: findDuplicates([1,2,3,4,5,4,3,4]) return [3, 4]
+
+function findDuplicates(arr: number[]): number[] {
+  arr.sort((a, b) => a - b);   // =>  Massivni saralash
+  const duplicates: number[] = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] === arr[i + 1] && !duplicates.includes(arr[i])) {
+      duplicates.push(arr[i]);
+    }
+  }
+
+  return duplicates;
 }
 
-console.log(areArraysEqual([1, 2, 3], [3, 1, 2])); // true
-console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1])); // false
-console.log(areArraysEqual([1, 2, 3], [4, 1, 2])); // false
+console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4])); // [3, 4]
