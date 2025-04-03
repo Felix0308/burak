@@ -740,12 +740,24 @@
 // Shunday function yozing, u parametridagi string ichidagi raqam va sonlarni sonini sanasin.
 // MASALAN: countNumberAndLetters(“string152%\¥”) return {number:3, letter:6}
 
-function countNumberAndLetters(input: string) {
-  return {
-    number: (input.match(/[0-9]/g) || []).length,
-    letter: (input.match(/[a-zA-Z]/g) || []).length,
-  };
+// function countNumberAndLetters(input: string) {
+//   return {
+//     number: (input.match(/[0-9]/g) || []).length,
+//     letter: (input.match(/[a-zA-Z]/g) || []).length,
+//   };
+// }
+
+// // Test:
+// console.log(countNumberAndLetters("string152%¥")); // { number: 3, letter: 6 }
+
+// *************************************************************************************************
+// ZS-TASK:
+
+// Shunday function yozing, u parametridagi arrayni ichidagi 1 marta kelgan elemnetni qaytarsin.
+// MASALAN: singleNumber([4, 2, 1, 2, 1]) return 4
+
+function singleNumber(nums: number[]): number {
+    return nums.find(num => nums.indexOf(num) === nums.lastIndexOf(num))!;
 }
 
-// Test:
-console.log(countNumberAndLetters("string152%¥")); // { number: 3, letter: 6 }
+console.log(singleNumber([4, 2, 1, 2, 1])); // 4
