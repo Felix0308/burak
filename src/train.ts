@@ -756,8 +756,28 @@
 // Shunday function yozing, u parametridagi arrayni ichidagi 1 marta kelgan elemnetni qaytarsin.
 // MASALAN: singleNumber([4, 2, 1, 2, 1]) return 4
 
-function singleNumber(nums: number[]): number {
-    return nums.find(num => nums.indexOf(num) === nums.lastIndexOf(num))!;
+// function singleNumber(nums: number[]): number {
+//     return nums.find(num => nums.indexOf(num) === nums.lastIndexOf(num))!;
+// }
+
+// console.log(singleNumber([4, 2, 1, 2, 1])); // 4
+
+// *************************************************************************************************
+// ZT-TASK:
+
+// Shunday function yozing, u parametridagi string ichida 1 martadan ortiq qaytarilmagan birinchi harf indeksini qaytarsin.
+// MASALAN: firstUniqueCharIndex(“stamp”) return 0
+
+function firstUniqueCharIndex(str: string): number {
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (str.indexOf(char) === str.lastIndexOf(char)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
-console.log(singleNumber([4, 2, 1, 2, 1])); // 4
+console.log(firstUniqueCharIndex("stamp")); // 0
+console.log(firstUniqueCharIndex("aabbcc")); // -1
+console.log(firstUniqueCharIndex("swiss"));  // 0
